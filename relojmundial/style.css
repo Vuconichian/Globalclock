@@ -1,0 +1,32 @@
+body{
+    background-color: #efefef;
+    height: 1000px;
+}
+
+.map{ 
+    text-align-last: center;
+    margin-top: 200px;
+    margin-bottom: 100px;
+}
+
+.overlay {
+    position: absolute;
+    top: 50px; /* Coordenada Y del punto */
+    left: 100px; /* Coordenada X del punto */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: 1;
+}
+
+.city-information-utc {
+    height: 200px;
+    text-align: center;
+}
+
+i {
+    color: #525252;
+    position: absolute;
+    left: calc(40%);
+}

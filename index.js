@@ -33,7 +33,7 @@ function updateHour(offset) {
     var minute = utcTime.getUTCMinutes().toString().padStart(2, "0");
     var second = utcTime.getUTCSeconds().toString().padStart(2, "0");
     var timeString = hour + ":" + minute + ":" + second;
-    var timeElement = document.getElementById("local-time");
+    var timeElement = document.getElementById("utc-times");
     timeElement.innerHTML = timeString;
 }
 

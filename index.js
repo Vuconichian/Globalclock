@@ -56,4 +56,5 @@ function init() {
         updateHour(getTimezoneOffset()/-60 - 1);
     });
 }
+
 init();

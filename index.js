@@ -27,5 +27,13 @@ function getLocalTimeFromUTC(utcDate) {
     return localTime;
 }
 
+function updateLocalTime() {
+    var localTimeElement = document.getElementById("local-time");
+    var localTime = new Date();
+    var localTimeString = "Local Time: " + localTime.toLocaleTimeString();
+    localTimeElement.textContent = localTimeString;
+}
+
+setInterval(updateLocalTime, 1000);
 
 displayAllUTCTimes();

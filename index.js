@@ -1,15 +1,3 @@
-function getTimezoneOffset() {
-    var d = new Date();
-    var offset = d.getTimezoneOffset();
-    return offset;
-}
-
-function getLocalTimeFromUTC(utcDate) {
-    var d = new Date(utcDate);
-    var offset = d.getTimezoneOffset();
-    var localTime = new Date(d.getTime() - (offset * 60 * 1000));
-    return localTime;
-}
 
 function displayAllUTCTimes() {
     var utcDate = new Date();
@@ -24,4 +12,20 @@ function displayAllUTCTimes() {
         utcTimesDiv.appendChild(utcTimeElement);
     }
 }
+
+function getTimezoneOffset() {
+    var d = new Date();
+    var offset = d.getTimezoneOffset();
+    return offset;
+}
+
+
+function getLocalTimeFromUTC(utcDate) {
+    var d = new Date(utcDate);
+    var offset = d.getTimezoneOffset();
+    var localTime = new Date(d.getTime() - (offset * 60 * 1000));
+    return localTime;
+}
+
+
 displayAllUTCTimes();

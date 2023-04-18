@@ -30,3 +30,11 @@ i {
     position: absolute;
     left: calc(40%);
 }
+
+
+#utc-times {
+    color: #fff; /* cambia el color del texto a blanco */
+    font-family: Arial, sans-serif; /* cambia la fuente del texto */
+    font-size: 20px; /* cambia el tamaño de letra a 20 píxeles */
+    margin-top: 20px; /* añade un margen superior de 20 píxeles */
+}

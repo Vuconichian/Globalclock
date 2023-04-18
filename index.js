@@ -1,9 +1,10 @@
 
-function displayAllUTCTimes() {
+function displayAllUTCTimes(utcOffset) {
     var utcDate = new Date();
     var utcTimesDiv = document.getElementById("utc-times");
+    utcTimesDiv.innerHTML = ""; // Vaciar el contenedor antes de actualizarlo
     for (var i = -12; i <= 12; i++) {
-        utcDate.setUTCHours(utcDate.getUTCHours() + i);
+        utcDate.setUTCHours(utcDate.getUTCHours() + i + utcOffset);
         var localTime = getLocalTimeFromUTC(utcDate);
         var utcTimeString = "UTC" + (i >= 0 ? "+" : "") + i + ": " + localTime;
         var utcTimeElement = document.createElement("p");
@@ -13,27 +14,28 @@ function displayAllUTCTimes() {
     }
 }
 
-function getTimezoneOffset() {
-    var d = new Date();
-    var offset = d.getTimezoneOffset();
-    return offset;
+document.getElementById("utc-minus").addEventListener("click", function() {
+    var utcOffset = parseInt(localStorage.getItem("utcOffset"));
+    if (utcOffset > -12) {
+        utcOffset--;
+        localStorage.setItem("utcOffset", utcOffset);
+        displayAllUTCTimes(utcOffset);
+    }
+});
+
+document.getElementById("utc-plus").addEventListener("click", function() {
+    var utcOffset = parseInt(localStorage.getItem("utcOffset"));
+    if (utcOffset < 12) {
+        utcOffset++;
+        localStorage.setItem("utcOffset", utcOffset);
+        displayAllUTCTimes(utcOffset);
+    }
+});
+
+// Obtener la zona horaria almacenada en el localStorage
+var utcOffset = parseInt(localStorage.getItem("utcOffset"));
+if (isNaN(utcOffset)) {
+    utcOffset = 0;
+    localStorage.setItem("utcOffset", utcOffset);
 }
-
-
-function getLocalTimeFromUTC(utcDate) {
-    var d = new Date(utcDate);
-    var offset = d.getTimezoneOffset();
-    var localTime = new Date(d.getTime() - (offset * 60 * 1000));
-    return localTime;
-}
-
-function updateLocalTime() {
-    var localTimeElement = document.getElementById("local-time");
-    var localTime = new Date();
-    var localTimeString = "Local Time: " + localTime.toLocaleTimeString();
-    localTimeElement.textContent = localTimeString;
-}
-
-setInterval(updateLocalTime, 1000);
-
-displayAllUTCTimes();
+displayAllUTCTimes(utcOffset);

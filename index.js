@@ -34,8 +34,9 @@ function updateHour(offset) {
     var second = utcTime.getUTCSeconds().toString().padStart(2, "0");
     var timeString = hour + ":" + minute + ":" + second;
     var timeElement = document.getElementById("local-time");
-    timeElement.innerHTML = timeString; // Actualiza el contenido del elemento
+    timeElement.innerHTML = timeString;
 }
+
 
 function init() {
     // Mostrar hora local
